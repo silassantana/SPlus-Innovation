@@ -105,7 +105,7 @@ function App() {
                     </div>
                     <div className="contact-item-text">
                       <span className="contact-item-label">Address</span>
-                      <span className="contact-item-value">Rua Emilio Rodrigues, 185</span>
+                      <span className="contact-item-value">Rua Emilio Rodrigues, 185, Vila Paiva, Sao Paulo - SP</span>
                     </div>
                   </div>
                   <div className="contact-item">
