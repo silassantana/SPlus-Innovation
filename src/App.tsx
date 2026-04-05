@@ -20,7 +20,7 @@ function App() {
       <div className="orb orb-2" />
 
       <nav>
-        <div className="logo">S<span>+</span></div>
+        <div className="logo"><img src="/logo.png" alt="SPlus Innovation" /></div>
         <ul className="nav-links">
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -30,6 +30,7 @@ function App() {
       <main>
         {/* Hero */}
         <section className="hero">
+          <img src="/logo.png" alt="SPlus Innovation" className="hero-logo" />
           <div className="hero-badge">Based in Brazil, powering the world</div>
           <h1>
             We build <span className="gradient">AI-powered</span><br />

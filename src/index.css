@@ -87,18 +87,9 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-bright);
-  letter-spacing: -0.02em;
-}
-
-.logo span {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.logo img {
+  height: 36px;
+  width: auto;
 }
 
 .nav-links {
@@ -130,6 +121,11 @@ main {
 }
 
 /* Hero */
+.hero-logo {
+  height: 80px;
+  margin-bottom: 2rem;
+}
+
 .hero {
   min-height: 100vh;
   display: flex;
