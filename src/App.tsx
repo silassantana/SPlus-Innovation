@@ -1,16 +1,33 @@
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In production you'd send this to your backend/email service
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setFormData({ name: '', email: '', message: '' })
-    setTimeout(() => setSubmitted(false), 3000)
+    setLoading(true)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        { from_name: formData.name, from_email: formData.email, message: formData.message },
+        EMAILJS_PUBLIC_KEY
+      )
+      setSubmitted(true)
+      setFormData({ name: '', email: '', message: '' })
+      setTimeout(() => setSubmitted(false), 3000)
+    } catch (err) {
+      console.error('Email send failed:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -165,8 +182,8 @@ function App() {
                         required
                       />
                     </div>
-                    <button type="submit" className="btn btn-primary">
-                      Send message
+                    <button type="submit" className="btn btn-primary" disabled={loading}>
+                      {loading ? 'Sending...' : 'Send message'}
                     </button>
                   </>
                 )}
